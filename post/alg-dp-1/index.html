@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>动态规划-背包问题 - Even - A super concise theme for Hugo</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="tdtzzz" /><meta name="description" content="背包类型问题 背包问题九讲 1.0-1背包问题 问题描述 给你一个可装载重量为 W 的背包和 N 个物品，每个物品有重量和价值两个属性。其中第 i 个物品的重量" /><meta name="keywords" content="Hugo, theFme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.76.5 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/alg-dp-1/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="动态规划-背包问题" />
+<meta property="og:description" content="背包类型问题 背包问题九讲 1.0-1背包问题 问题描述 给你一个可装载重量为 W 的背包和 N 个物品，每个物品有重量和价值两个属性。其中第 i 个物品的重量" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/alg-dp-1/" />
+<meta property="article:published_time" content="2020-12-12T13:05:04+08:00" />
+<meta property="article:modified_time" content="2020-12-12T13:05:04+08:00" />
+<meta itemprop="name" content="动态规划-背包问题">
+<meta itemprop="description" content="背包类型问题 背包问题九讲 1.0-1背包问题 问题描述 给你一个可装载重量为 W 的背包和 N 个物品，每个物品有重量和价值两个属性。其中第 i 个物品的重量">
+<meta itemprop="datePublished" content="2020-12-12T13:05:04+08:00" />
+<meta itemprop="dateModified" content="2020-12-12T13:05:04+08:00" />
+<meta itemprop="wordCount" content="1254">
+
+
+
+<meta itemprop="keywords" content="算法,动态规划,背包问题," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="动态规划-背包问题"/>
+<meta name="twitter:description" content="背包类型问题 背包问题九讲 1.0-1背包问题 问题描述 给你一个可装载重量为 W 的背包和 N 个物品，每个物品有重量和价值两个属性。其中第 i 个物品的重量"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">码怪记事录</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">时间线</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">码怪记事录</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">时间线</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">动态规划-背包问题</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-12-12 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%8E%89%E5%AE%B3%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"> 厉害的动态规划 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#背包类型问题">背包类型问题</a>
+      <ul>
+        <li><a href="#10-1背包问题">1.0-1背包问题</a>
+          <ul>
+            <li><a href="#问题描述">问题描述</a></li>
+            <li><a href="#状态定义">状态定义</a></li>
+            <li><a href="#状态转移">状态转移</a></li>
+            <li><a href="#代码实现">代码实现</a></li>
+            <li><a href="#优化空间复杂度状态压缩">优化空间复杂度(状态压缩)</a></li>
+            <li><a href="#典型例题">典型例题</a></li>
+          </ul>
+        </li>
+        <li><a href="#2完全背包问题">2.完全背包问题</a>
+          <ul>
+            <li><a href="#问题描述-1">问题描述</a></li>
+            <li><a href="#状态定义-1">状态定义</a></li>
+            <li><a href="#状态转移-1">状态转移</a></li>
+            <li><a href="#代码实现-1">代码实现</a></li>
+            <li><a href="#空间复杂度优化状态压缩">空间复杂度优化（状态压缩）</a></li>
+            <li><a href="#典型例题-1">典型例题</a></li>
+          </ul>
+        </li>
+        <li><a href="#解题思路分类">解题思路分类</a>
+          <ul>
+            <li><a href="#1组合问题">1.组合问题：</a></li>
+            <li><a href="#2truefalse问题">2.True、False问题：</a></li>
+            <li><a href="#3最大最小问题">3.最大最小问题：</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="背包类型问题">背包类型问题</h1>
+<blockquote>
+<p><a href="https://www.kancloud.cn/kancloud/pack/70124">背包问题九讲</a></p>
+</blockquote>
+<h2 id="10-1背包问题">1.0-1背包问题</h2>
+<h3 id="问题描述">问题描述</h3>
+<blockquote>
+<p>给你一个可装载重量为 <code>W</code> 的背包和 <code>N</code> 个物品，每个物品有重量和价值两个属性。其中第 <code>i</code> 个物品的重量为 <code>wt[i]</code>，价值为 <code>val[i]</code>，现在让你用这个背包装物品，最多能装的价值是多少？</p>
+</blockquote>
+<h3 id="状态定义">状态定义</h3>
+<blockquote>
+<p>F(n,c)表示将n个物体放进容量为c的背包，使得价值最大</p>
+</blockquote>
+<h3 id="状态转移">状态转移</h3>
+<blockquote>
+<p>对于F(i,c),有两种情况，将第i个物品加入 还是 直接忽略</p>
+</blockquote>
+<p><code>F(i,C) = max{F(i-1, C), v(i) + F(i-1, C-w(i))} </code></p>
+<h3 id="代码实现">代码实现</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//01背包
+</span><span class="c1">//v，w 为价值和重量的切片
+</span><span class="c1">//capacity为背包重量
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">knapsack01</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">w</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">capacity</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">dp</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([][]</span><span class="kt">int</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">capacity</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="c1">//选第几个物品
+</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="k">for</span> <span class="nx">c</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">c</span> <span class="o">&lt;=</span> <span class="nx">capacity</span><span class="p">;</span> <span class="nx">c</span><span class="o">++</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">c</span> <span class="p">&lt;</span> <span class="nx">w</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">{</span>
+				<span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">c</span><span class="p">]</span> <span class="p">=</span> <span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="nx">c</span><span class="p">]</span>
+			<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+				<span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">c</span><span class="p">]</span> <span class="p">=</span> <span class="nf">max</span><span class="p">(</span><span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="nx">c</span><span class="p">],</span> <span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="nx">c</span><span class="o">-</span><span class="nx">w</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">+</span><span class="nx">v</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">dp</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">v</span><span class="p">)][</span><span class="nx">capacity</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">max</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="nx">a</span> <span class="p">&gt;</span> <span class="nx">b</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nx">a</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">b</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="优化空间复杂度状态压缩">优化空间复杂度(状态压缩)</h3>
+<p>上面的方法，空间和时间复杂度均为O(vn),其中时间复杂度已经不能再优化了，但是空间复杂度却可以优化到O(n)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//空间优化版本
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">knapsack01V2</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">w</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">capacity</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">dp</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">capacity</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="k">for</span> <span class="nx">c</span> <span class="o">:=</span> <span class="nx">capacity</span><span class="p">;</span> <span class="nx">c</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">c</span><span class="o">--</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">c</span> <span class="o">&gt;=</span> <span class="nx">w</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">{</span>
+				<span class="nx">dp</span><span class="p">[</span><span class="nx">c</span><span class="p">]</span> <span class="p">=</span> <span class="nf">max</span><span class="p">(</span><span class="nx">dp</span><span class="p">[</span><span class="nx">c</span><span class="p">],</span> <span class="nx">dp</span><span class="p">[</span><span class="nx">c</span><span class="o">-</span><span class="nx">w</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">+</span><span class="nx">v</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">dp</span><span class="p">[</span><span class="nx">capacity</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="典型例题">典型例题</h3>
+<p><a href="https://leetcode-cn.com/problems/partition-equal-subset-sum/">416-分割等和子集</a></p>
+<h2 id="2完全背包问题">2.完全背包问题</h2>
+<h3 id="问题描述-1">问题描述</h3>
+<blockquote>
+<p>有一个背包，最大容量为 <code>amount</code>，有一系列物品 <code>coins</code>，每个物品的重量为 <code>coins[i]</code>，<strong>每个物品的数量无限</strong>。请问有多少种方法，能够把背包恰好装满？</p>
+<p>**区别：**和01背包的区别就在于每个物品数量无限</p>
+</blockquote>
+<h3 id="状态定义-1">状态定义</h3>
+<blockquote>
+<p>明确<strong>状态</strong>和<strong>选择</strong></p>
+<p><strong>状态</strong>有两个，就是1.背包的容量 2.可选择的物品</p>
+<p><strong>选择</strong>就是 装进背包/不装进背包</p>
+<p><strong>dp数组</strong>的定义：若只使用前 <code>i</code> 个物品，当背包容量为 <code>j</code> 时，有 <code>dp[i][j]</code> 种方法可以装满背包。</p>
+<p>翻译成题目的意思就是：</p>
+<p><strong>若只使用</strong> <strong><code>coins</code></strong> <strong>中的前</strong> <strong><code>i</code></strong> <strong>个硬币的面值，若想凑出金额</strong> <strong><code>j</code>，有</strong><code>dp[i][j]</code>** **种凑法**。</p>
+</blockquote>
+<h3 id="状态转移-1">状态转移</h3>
+<blockquote>
+<p><strong>如果不把第<code>i</code>个物品放入背包</strong>。那么就是不用<code>coins[i]</code>这个面值的硬币，那么凑出<code>j</code>的方法数越高等于<code>dp[i-1][j]</code></p>
+<p><strong>如果把第<code>i</code>个物品放入背包</strong>。那么<code>dp[i][j]=dp[i][j-coins[i-1]]</code></p>
+</blockquote>
+<h3 id="代码实现-1">代码实现</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">knapsack</span><span class="p">(</span><span class="nx">coins</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">coinsNum</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">coins</span><span class="p">)</span>
+	<span class="nx">dp</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([][]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">coinsNum</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">coinsNum</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">amount</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+		<span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span>
+	<span class="p">}</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">coinsNum</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="nx">amount</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">j</span> <span class="o">&gt;=</span> <span class="nx">coins</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">{</span>
+				<span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="o">+</span> <span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="nx">j</span><span class="o">-</span><span class="nx">coins</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+			<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+				<span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">dp</span><span class="p">[</span><span class="nx">coinsNum</span><span class="p">][</span><span class="nx">amount</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="空间复杂度优化状态压缩">空间复杂度优化（状态压缩）</h3>
+<p>观察可发现，<code>dp</code>数组的转移只和<code>dp[i][..]</code>和<code>dp[i-1][..]</code>有关，所以可以压缩状态，降低空间复杂度</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//状态压缩
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">knapsackV2</span><span class="p">(</span><span class="nx">coins</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">n</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">coins</span><span class="p">)</span>
+	<span class="nx">dp</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">amount</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+	<span class="nx">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span>
+
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="nx">amount</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">j</span> <span class="p">&gt;</span> <span class="nx">coins</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">{</span>
+				<span class="nx">dp</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">dp</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">+</span> <span class="nx">dp</span><span class="p">[</span><span class="nx">j</span><span class="o">-</span><span class="nx">coins</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">dp</span><span class="p">[</span><span class="nx">amount</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="典型例题-1">典型例题</h3>
+<p><a href="https://leetcode-cn.com/problems/coin-change-2/">零钱兑换II</a></p>
+<h2 id="解题思路分类">解题思路分类</h2>
+<p>常见的背包问题有1、组合问题。2、True、False问题。3、最大最小问题。</p>
+<p>我在大神整理的基础上，又做了细分的整理。分为三类。</p>
+<h3 id="1组合问题">1.组合问题：</h3>
+<p><a href="https://leetcode-cn.com/problems/combination-sum-iv/">377-组合总和IV</a></p>
+<p><a href="https://leetcode-cn.com/problems/target-sum/">494-目标和</a></p>
+<p><a href="https://leetcode-cn.com/problems/coin-change-2/">518-零钱兑换II</a></p>
+<h3 id="2truefalse问题">2.True、False问题：</h3>
+<p><a href="https://leetcode-cn.com/problems/word-break/">139-单词拆分</a></p>
+<p><a href="https://leetcode-cn.com/problems/partition-equal-subset-sum/">416-分割等和子集</a></p>
+<h3 id="3最大最小问题">3.最大最小问题：</h3>
+<p><a href="https://leetcode-cn.com/problems/ones-and-zeroes/">474-一和零</a></p>
+<p><a href="https://leetcode-cn.com/problems/coin-change/">322-零钱兑换</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">tdtzzz</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-12-12
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+          <a href="/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">背包问题</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/chat_room/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">go实现简易聊天室</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/go-parse-json/">
+            <span class="next-text nav-default">Go解析json</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="ttforcoder@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/TDTzzz" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2020 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>tdtzzz</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

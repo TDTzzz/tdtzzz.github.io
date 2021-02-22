@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/web/</link>
+    <description>Recent content in web on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 30 Dec 2020 10:26:46 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go-Web|Router的设计</title>
+      <link>http://localhost:1313/post/go-web-1/</link>
+      <pubDate>Wed, 30 Dec 2020 10:26:46 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-web-1/</guid>
+      <description>概述 本文参考Gin，讲述如何实现一个基于Trie树的路由。 项目代码 7天从零实现Web框架 分析 详细请看架构图里的逻辑 1 2 3 4 5 6 7 8 9 10 11 12 13</description>
+    </item>
+    
+  </channel>
+</rss>

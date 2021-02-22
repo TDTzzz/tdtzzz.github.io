@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>前缀树 on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/%E5%89%8D%E7%BC%80%E6%A0%91/</link>
+    <description>Recent content in 前缀树 on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 19 Dec 2020 23:40:49 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%89%8D%E7%BC%80%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>前缀树</title>
+      <link>http://localhost:1313/post/trie-tree/</link>
+      <pubDate>Sat, 19 Dec 2020 23:40:49 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/trie-tree/</guid>
+      <description>看动画轻松理解「Trie树」 埋坑：目前只是了解原理及用法，代码实现以后补上 定义 Trie 树，也叫“字典树”。顾名思义，它是一个树形结构。它是一种专门</description>
+    </item>
+    
+  </channel>
+</rss>

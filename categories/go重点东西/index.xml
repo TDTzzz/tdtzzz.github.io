@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go重点东西 on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/categories/go%E9%87%8D%E7%82%B9%E4%B8%9C%E8%A5%BF/</link>
+    <description>Recent content in go重点东西 on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 03 Jan 2021 12:08:16 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/go%E9%87%8D%E7%82%B9%E4%B8%9C%E8%A5%BF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go-Gc</title>
+      <link>http://localhost:1313/post/go-gc/</link>
+      <pubDate>Sun, 03 Jan 2021 12:08:16 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-gc/</guid>
+      <description>概述 垃圾回收（英语：Garbage Collection，缩写为GC）是指一种自动的内存管理机制。当某个程序占用的一部分内存空间不再被这个程序</description>
+    </item>
+    
+    <item>
+      <title>Go-Gmp</title>
+      <link>http://localhost:1313/post/go-gmp/</link>
+      <pubDate>Sun, 20 Dec 2020 12:20:58 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-gmp/</guid>
+      <description>参考 Golang深入理解GMP模型(视频) Golang调度器GMP原理与调度全分析 上面的文章和视频讲的很好，就不复制粘贴了。下面提提重点部分</description>
+    </item>
+    
+  </channel>
+</rss>

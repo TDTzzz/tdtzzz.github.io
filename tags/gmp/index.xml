@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gmp on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/gmp/</link>
+    <description>Recent content in gmp on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 20 Dec 2020 12:20:58 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/gmp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go-Gmp</title>
+      <link>http://localhost:1313/post/go-gmp/</link>
+      <pubDate>Sun, 20 Dec 2020 12:20:58 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-gmp/</guid>
+      <description>参考 Golang深入理解GMP模型(视频) Golang调度器GMP原理与调度全分析 上面的文章和视频讲的很好，就不复制粘贴了。下面提提重点部分</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 14 Feb 2021 17:10:54 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
+      
+      <guid>http://localhost:1313/about/</guid>
+      <description>好，我要开始写技术博客了ヾ(◍°∇°◍)ﾉﾞ</description>
+    </item>
+    
+    <item>
+      <title>从零开始实现Go的分布式缓存</title>
+      <link>http://localhost:1313/post/go-cache-1/</link>
+      <pubDate>Sun, 14 Feb 2021 17:10:54 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-cache-1/</guid>
+      <description>概述 引用：7天用Go从零实现分布式缓存GeeCache 这个系列写的真的好，动手敲了遍，然后二次吸收汇总成这边文章。主要是画图，思路省略了。 实</description>
+    </item>
+    
+    <item>
+      <title>Go基础-Slice</title>
+      <link>http://localhost:1313/post/go-basic-slice/</link>
+      <pubDate>Fri, 12 Feb 2021 12:00:04 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-basic-slice/</guid>
+      <description>创建方式 数组下标(或者切片下标)，比如a:=[5]int{1,2,3,4,5} s:=a[1:3] 字面量，比如slice:=[]int{1,2,3,4} make 直接</description>
+    </item>
+    
+    <item>
+      <title>Go的并发模式</title>
+      <link>http://localhost:1313/post/go-cocurrence-design/</link>
+      <pubDate>Mon, 01 Feb 2021 15:41:29 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-cocurrence-design/</guid>
+      <description>此文借鉴 《22讲通关GO语言》飞雪无情 并发模式和设计模式很相似，都是对现实场景的抽象封装 以便提供一个统一的解决方案 但和设计模式不同的是，并发</description>
+    </item>
+    
+    <item>
+      <title>缓存淘汰算法</title>
+      <link>http://localhost:1313/post/lfu-lru/</link>
+      <pubDate>Sat, 30 Jan 2021 14:35:41 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/lfu-lru/</guid>
+      <description>缓存淘汰算法 概念 又称页面置换算法。缓存是一种计算机思维，有着优秀的读取速度，但是缓存的空间是宝贵的，所以不会吧所有的数据缓存起立，必须依赖一</description>
+    </item>
+    
+    <item>
+      <title>Go-Gc</title>
+      <link>http://localhost:1313/post/go-gc/</link>
+      <pubDate>Sun, 03 Jan 2021 12:08:16 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-gc/</guid>
+      <description>概述 垃圾回收（英语：Garbage Collection，缩写为GC）是指一种自动的内存管理机制。当某个程序占用的一部分内存空间不再被这个程序</description>
+    </item>
+    
+    <item>
+      <title>Go-爬虫|爬虫架构的设计</title>
+      <link>http://localhost:1313/post/go-crawler/</link>
+      <pubDate>Sat, 02 Jan 2021 12:44:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-crawler/</guid>
+      <description>概述 不用框架，利用channel和goroutine设计一个优秀的并发爬虫架构。 爬的是武汉链家二手房信息 https://wh.lianjia.com/ershoufang/ ps 解析html方面图方便，用了gi</description>
+    </item>
+    
+    <item>
+      <title>Go-Web|Router的设计</title>
+      <link>http://localhost:1313/post/go-web-1/</link>
+      <pubDate>Wed, 30 Dec 2020 10:26:46 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-web-1/</guid>
+      <description>概述 本文参考Gin，讲述如何实现一个基于Trie树的路由。 项目代码 7天从零实现Web框架 分析 详细请看架构图里的逻辑 1 2 3 4 5 6 7 8 9 10 11 12 13</description>
+    </item>
+    
+    <item>
+      <title>基于Go的轻量级并发服务器框架</title>
+      <link>http://localhost:1313/post/tcp-frame-1/</link>
+      <pubDate>Sun, 27 Dec 2020 11:38:16 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/tcp-frame-1/</guid>
+      <description>参考:zinx 简书教程 我的项目地址:gua_ping Why 之前接触web后端比较多，对游戏领域或者其他长链接领域接触的较少。 打算通过手写一个TC</description>
+    </item>
+    
+    <item>
+      <title>Go-Gmp</title>
+      <link>http://localhost:1313/post/go-gmp/</link>
+      <pubDate>Sun, 20 Dec 2020 12:20:58 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-gmp/</guid>
+      <description>参考 Golang深入理解GMP模型(视频) Golang调度器GMP原理与调度全分析 上面的文章和视频讲的很好，就不复制粘贴了。下面提提重点部分</description>
+    </item>
+    
+    <item>
+      <title>前缀树</title>
+      <link>http://localhost:1313/post/trie-tree/</link>
+      <pubDate>Sat, 19 Dec 2020 23:40:49 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/trie-tree/</guid>
+      <description>看动画轻松理解「Trie树」 埋坑：目前只是了解原理及用法，代码实现以后补上 定义 Trie 树，也叫“字典树”。顾名思义，它是一个树形结构。它是一种专门</description>
+    </item>
+    
+    <item>
+      <title>红黑树</title>
+      <link>http://localhost:1313/post/red-black-tree/</link>
+      <pubDate>Sat, 19 Dec 2020 10:27:14 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/red-black-tree/</guid>
+      <description>此文只浅显的讲了下概念，至于复杂的代码实现没涉及，后续有时间搞 用go实现红黑树的相关操作 红黑树 好文章 什么是红黑树 当在10亿数据进行不到30次</description>
+    </item>
+    
+    <item>
+      <title>go实现简易聊天室</title>
+      <link>http://localhost:1313/post/chat_room/</link>
+      <pubDate>Sat, 12 Dec 2020 23:01:42 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/chat_room/</guid>
+      <description>用golang编写一个简易的聊天室 项目代码 需求 用户可以连接到这个聊天室 用户连接时可以设置连接时的用户名 用户在里面发的消息，会广播给其他所有用</description>
+    </item>
+    
+    <item>
+      <title>动态规划-背包问题</title>
+      <link>http://localhost:1313/post/alg-dp-1/</link>
+      <pubDate>Sat, 12 Dec 2020 13:05:04 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/alg-dp-1/</guid>
+      <description>背包类型问题 背包问题九讲 1.0-1背包问题 问题描述 给你一个可装载重量为 W 的背包和 N 个物品，每个物品有重量和价值两个属性。其中第 i 个物品的重量</description>
+    </item>
+    
+    <item>
+      <title>Go解析json</title>
+      <link>http://localhost:1313/post/go-parse-json/</link>
+      <pubDate>Sun, 29 Nov 2020 13:08:31 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-parse-json/</guid>
+      <description>后端开发常常要和json打交道，以前写php这种弱类型动态语言时，没觉得这是个事，一个数组结构搞定一切。但在强类型的golang里，如何优雅</description>
+    </item>
+    
+    <item>
+      <title>二叉树的套路汇总</title>
+      <link>http://localhost:1313/post/alg-tree-1/</link>
+      <pubDate>Sat, 28 Nov 2020 14:29:45 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/alg-tree-1/</guid>
+      <description>万变不离其宗的二叉树基本解法 前中后序遍历 层序遍历 算深度 常见的二叉树类型 满二叉树：除最后一层无任何子节点外，每一层上的所有结点都有两个子结点二</description>
+    </item>
+    
+    <item>
+      <title>厉害的并查集</title>
+      <link>http://localhost:1313/post/alg-unionfindset/</link>
+      <pubDate>Wed, 11 Nov 2020 21:56:46 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/alg-unionfindset/</guid>
+      <description>好文章 wiki百科 并查集是啥 并查集也叫作不相交集合(Disjoint Set),用于处理一些不交集的合并及查询问题。 并查集有两个核心操作： 查找</description>
+    </item>
+    
+    <item>
+      <title>Go Kit基操</title>
+      <link>http://localhost:1313/post/go-kit/</link>
+      <pubDate>Sun, 08 Nov 2020 13:18:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-kit/</guid>
+      <description>go-micro希望成为一个平台，而go-kit希望成为你平台的一部分 go-kit核心 Service 负责处理业务逻辑 Endpoint 负责请求数据于返回数据的格式转换，</description>
+    </item>
+    
+    <item>
+      <title>Go Rpc 1</title>
+      <link>http://localhost:1313/post/go-rpc-1/</link>
+      <pubDate>Sun, 01 Nov 2020 16:41:37 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-rpc-1/</guid>
+      <description>参考博客-极客兔兔 本文从宏观上讲解一个基础rpc框架的实现。 1.RPC框架的基本组成 Registry registry即是注册中心，用于Server注册远程</description>
+    </item>
+    
+  </channel>
+</rss>

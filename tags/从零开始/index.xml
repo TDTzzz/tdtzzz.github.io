@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>从零开始 on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/</link>
+    <description>Recent content in 从零开始 on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 14 Feb 2021 17:10:54 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从零开始实现Go的分布式缓存</title>
+      <link>http://localhost:1313/post/go-cache-1/</link>
+      <pubDate>Sun, 14 Feb 2021 17:10:54 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-cache-1/</guid>
+      <description>概述 引用：7天用Go从零实现分布式缓存GeeCache 这个系列写的真的好，动手敲了遍，然后二次吸收汇总成这边文章。主要是画图，思路省略了。 实</description>
+    </item>
+    
+    <item>
+      <title>Go-Web|Router的设计</title>
+      <link>http://localhost:1313/post/go-web-1/</link>
+      <pubDate>Wed, 30 Dec 2020 10:26:46 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-web-1/</guid>
+      <description>概述 本文参考Gin，讲述如何实现一个基于Trie树的路由。 项目代码 7天从零实现Web框架 分析 详细请看架构图里的逻辑 1 2 3 4 5 6 7 8 9 10 11 12 13</description>
+    </item>
+    
+    <item>
+      <title>Go Rpc 1</title>
+      <link>http://localhost:1313/post/go-rpc-1/</link>
+      <pubDate>Sun, 01 Nov 2020 16:41:37 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-rpc-1/</guid>
+      <description>参考博客-极客兔兔 本文从宏观上讲解一个基础rpc框架的实现。 1.RPC框架的基本组成 Registry registry即是注册中心，用于Server注册远程</description>
+    </item>
+    
+  </channel>
+</rss>

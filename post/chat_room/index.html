@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>go实现简易聊天室 - Even - A super concise theme for Hugo</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="tdtzzz" /><meta name="description" content="用golang编写一个简易的聊天室 项目代码 需求 用户可以连接到这个聊天室 用户连接时可以设置连接时的用户名 用户在里面发的消息，会广播给其他所有用" /><meta name="keywords" content="Hugo, theFme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.76.5 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/chat_room/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="go实现简易聊天室" />
+<meta property="og:description" content="用golang编写一个简易的聊天室 项目代码 需求 用户可以连接到这个聊天室 用户连接时可以设置连接时的用户名 用户在里面发的消息，会广播给其他所有用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/chat_room/" />
+<meta property="article:published_time" content="2020-12-12T23:01:42+08:00" />
+<meta property="article:modified_time" content="2020-12-12T23:01:42+08:00" />
+<meta itemprop="name" content="go实现简易聊天室">
+<meta itemprop="description" content="用golang编写一个简易的聊天室 项目代码 需求 用户可以连接到这个聊天室 用户连接时可以设置连接时的用户名 用户在里面发的消息，会广播给其他所有用">
+<meta itemprop="datePublished" content="2020-12-12T23:01:42+08:00" />
+<meta itemprop="dateModified" content="2020-12-12T23:01:42+08:00" />
+<meta itemprop="wordCount" content="1828">
+
+
+
+<meta itemprop="keywords" content="go,聊天室," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="go实现简易聊天室"/>
+<meta name="twitter:description" content="用golang编写一个简易的聊天室 项目代码 需求 用户可以连接到这个聊天室 用户连接时可以设置连接时的用户名 用户在里面发的消息，会广播给其他所有用"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">码怪记事录</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">时间线</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">码怪记事录</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">时间线</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">go实现简易聊天室</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-12-12 </span>
+        <div class="post-category">
+            <a href="/categories/%E4%BB%A5%E5%B0%8F%E8%A7%81%E5%A4%A7%E7%9A%84%E9%A1%B9%E7%9B%AE/"> 以小见大的项目 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#需求">需求</a></li>
+    <li><a href="#流程分析">流程分析</a>
+      <ul>
+        <li><a href="#1通讯协议">1.通讯协议</a></li>
+        <li><a href="#2指令编写">2.指令编写</a></li>
+        <li><a href="#3服务端">3.服务端</a></li>
+        <li><a href="#4客户端">4.客户端</a></li>
+        <li><a href="#5其他">5.其他</a></li>
+        <li><a href="#6todo">6.Todo</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p><a href="https://juejin.cn/post/6844903976291287048">用golang编写一个简易的聊天室</a></p>
+<p><a href="https://github.com/nqbao/go-sandbox/tree/chat/0.0.1/chatserver">项目代码</a></p>
+</blockquote>
+<h1 id="需求">需求</h1>
+<ul>
+<li>用户可以连接到这个聊天室</li>
+<li>用户连接时可以设置连接时的用户名</li>
+<li>用户在里面发的消息，会广播给其他所有用户</li>
+</ul>
+<h1 id="流程分析">流程分析</h1>
+<p>大体上分为以下几个部分</p>
+<h2 id="1通讯协议">1.通讯协议</h2>
+<p>即客户端和服务端的通讯协议，可以用<strong>传输层</strong>的<strong>udp</strong>,<strong>tcp</strong>，或者基于传输层之上的<strong>websocket</strong>，<strong>rpc</strong>。</p>
+<p>这里我选用tcp作为通讯协议。因为tcp是传输层，更偏底层，是应用层的基础，而且是面向连接的，很适合聊天室场景。</p>
+<blockquote>
+<p><strong>Websocket与Socket的区别</strong></p>
+<ol>
+<li>Socket 是传输控制层的接口。用户可以通过 Socket 来操作底层 TCP/IP 协议族通信。</li>
+<li>WebSocket 是一个完整应用层协议。</li>
+<li>Socket 更灵活，WebSocket 更易用。</li>
+<li>两者都能做即时通讯</li>
+</ol>
+</blockquote>
+<h2 id="2指令编写">2.指令编写</h2>
+<p>根据需求，我们可以抽象出以下三个指令<code>struct</code></p>
+<ul>
+<li>发送指令(SEND)：<code>Client</code>发送聊天信息</li>
+<li>命名指令(NAME)：客户端设置用户名</li>
+<li>消息指令(MESSAGE)：服务端广播聊天消息给其他用户</li>
+</ul>
+<p>每个指令都是string，以指令名称开始，后面接内容，以<code>\n</code>结束</p>
+<p>比如，一个新的Client进聊天室</p>
+<ol>
+<li><code>NAME 我叫XX\n</code> 于是这个client标记的name就是”我叫xx“</li>
+<li><code>SEND Hello\n</code>然后发消息，提交给tcp socket</li>
+<li>Server端接受消息后会发广播<code>MESSAGE 我叫XX Hello\n</code>,于是”我叫XX“的”Hello“被广播给了其他用户</li>
+</ol>
+<p>具体的指令<code>struct</code>如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// SendCommand is used for sending new message from client
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">SendCommand</span> <span class="kd">struct</span> <span class="p">{</span>
+   <span class="nx">Message</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// NameCommand is used for setting client display name
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">NameCommand</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Name</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// MessageCommand is used for notifying new messages
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">MessageCommand</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Name</span>    <span class="kt">string</span>
+    <span class="nx">Message</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3服务端">3.服务端</h2>
+<p><code>server</code>用于处理聊天室的逻辑，包括消息广播，记载client连接等等。</p>
+<p>先定义一<code>server</code>的<code>interface</code>,可以清晰看到<code>server</code>的功能</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">ChatServer</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nf">Listen</span><span class="p">(</span><span class="nx">address</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="c1">//创建一个tcp连接
+</span><span class="c1"></span>    <span class="nf">Broadcast</span><span class="p">(</span><span class="nx">command</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">error</span> <span class="c1">//广播
+</span><span class="c1"></span>    <span class="nf">Start</span><span class="p">()</span><span class="c1">//开始监听tcp
+</span><span class="c1"></span>    <span class="nf">Close</span><span class="p">()</span><span class="c1">//关闭tcp
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>实现代码如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">TcpChatServer</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">listener</span> <span class="nx">net</span><span class="p">.</span><span class="nx">Listener</span>
+    <span class="nx">clients</span> <span class="p">[]</span><span class="o">*</span><span class="nx">client</span>
+    <span class="nx">mutex</span>   <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span><span class="c1">//加锁以免并发导致数据不一致
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">client</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">conn</span>   <span class="nx">net</span><span class="p">.</span><span class="nx">Conn</span>
+    <span class="nx">name</span>   <span class="kt">string</span>
+    <span class="nx">writer</span> <span class="o">*</span><span class="nx">protocol</span><span class="p">.</span><span class="nx">CommandWriter</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">TcpChatServer</span><span class="p">)</span> <span class="nf">Listen</span><span class="p">(</span><span class="nx">address</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="nx">l</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="s">&#34;tcp&#34;</span><span class="p">,</span> <span class="nx">address</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">s</span><span class="p">.</span><span class="nx">listener</span> <span class="p">=</span> <span class="nx">l</span>
+     <span class="p">}</span>
+     <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Listening on %v&#34;</span><span class="p">,</span> <span class="nx">address</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">err</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">TcpChatServer</span><span class="p">)</span> <span class="nf">Close</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">listener</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">TcpChatServer</span><span class="p">)</span> <span class="nf">Start</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="c1">// XXX: need a way to break the loop
+</span><span class="c1"></span>        <span class="nx">conn</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">listener</span><span class="p">.</span><span class="nf">Accept</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+           <span class="c1">// handle connection
+</span><span class="c1"></span>           <span class="nx">client</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nf">accept</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
+           <span class="k">go</span> <span class="nx">s</span><span class="p">.</span><span class="nf">serve</span><span class="p">(</span><span class="nx">client</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>当服务端接受到新的连接时，会创建新的client去跟踪此用户。这里需要考虑到并发冲突，所以用了<code>mutex</code>锁定共享资源。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">TcpChatServer</span><span class="p">)</span> <span class="nf">accept</span><span class="p">(</span><span class="nx">conn</span> <span class="nx">net</span><span class="p">.</span><span class="nx">Conn</span><span class="p">)</span> <span class="o">*</span><span class="nx">client</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Accepting connection from %v, total clients: %v&#34;</span><span class="p">,</span> <span class="nx">conn</span><span class="p">.</span><span class="nf">RemoteAddr</span><span class="p">().</span><span class="nf">String</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">clients</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">mutex</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
+    <span class="k">defer</span> <span class="nx">s</span><span class="p">.</span><span class="nx">mutex</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">()</span>
+    <span class="nx">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">client</span><span class="p">{</span>
+        <span class="nx">conn</span><span class="p">:</span>   <span class="nx">conn</span><span class="p">,</span>
+        <span class="nx">writer</span><span class="p">:</span> <span class="nx">protocol</span><span class="p">.</span><span class="nf">NewCommandWriter</span><span class="p">(</span><span class="nx">conn</span><span class="p">),</span>
+    <span class="p">}</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">clients</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">clients</span><span class="p">,</span> <span class="nx">client</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">client</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">TcpChatServer</span><span class="p">)</span> <span class="nf">remove</span><span class="p">(</span><span class="nx">client</span> <span class="o">*</span><span class="nx">client</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">mutex</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
+    <span class="k">defer</span> <span class="nx">s</span><span class="p">.</span><span class="nx">mutex</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">()</span>
+    <span class="c1">// remove the connections from clients array
+</span><span class="c1"></span>    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">check</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span><span class="p">.</span><span class="nx">clients</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">check</span> <span class="o">==</span> <span class="nx">client</span> <span class="p">{</span>
+            <span class="nx">s</span><span class="p">.</span><span class="nx">clients</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">clients</span><span class="p">[:</span><span class="nx">i</span><span class="p">],</span> <span class="nx">s</span><span class="p">.</span><span class="nx">clients</span><span class="p">[</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span><span class="o">...</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Closing connection from %v&#34;</span><span class="p">,</span> <span class="nx">client</span><span class="p">.</span><span class="nx">conn</span><span class="p">.</span><span class="nf">RemoteAddr</span><span class="p">().</span><span class="nf">String</span><span class="p">())</span>
+    <span class="nx">client</span><span class="p">.</span><span class="nx">conn</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><code>serve</code>方法主要处理客户端发过来的指令。根据上面我们讲的几种指令类型不同的处理他们。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">TcpChatServer</span><span class="p">)</span> <span class="nf">serve</span><span class="p">(</span><span class="nx">client</span> <span class="o">*</span><span class="nx">client</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">cmdReader</span> <span class="o">:=</span> <span class="nx">protocol</span><span class="p">.</span><span class="nf">NewCommandReader</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">conn</span><span class="p">)</span>
+    <span class="k">defer</span> <span class="nx">s</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="nx">client</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="nx">cmd</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmdReader</span><span class="p">.</span><span class="nf">Read</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="o">&amp;&amp;</span> <span class="nx">err</span> <span class="o">!=</span> <span class="nx">io</span><span class="p">.</span><span class="nx">EOF</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Read error: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="nx">cmd</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="k">switch</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="nx">protocol</span><span class="p">.</span><span class="nx">SendCommand</span><span class="p">:</span>
+                <span class="k">go</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Broadcast</span><span class="p">(</span><span class="nx">protocol</span><span class="p">.</span><span class="nx">MessageCommand</span><span class="p">{</span>
+                    <span class="nx">Message</span><span class="p">:</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Message</span><span class="p">,</span>
+                    <span class="nx">Name</span><span class="p">:</span>    <span class="nx">client</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+                <span class="p">})</span>
+            <span class="k">case</span> <span class="nx">protocol</span><span class="p">.</span><span class="nx">NameCommand</span><span class="p">:</span>
+                <span class="nx">client</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Name</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="nx">io</span><span class="p">.</span><span class="nx">EOF</span> <span class="p">{</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">TcpChatServer</span><span class="p">)</span> <span class="nf">Broadcast</span><span class="p">(</span><span class="nx">command</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">client</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span><span class="p">.</span><span class="nx">clients</span> <span class="p">{</span>
+        <span class="c1">// TODO: handle error here?
+</span><span class="c1"></span>        <span class="nx">client</span><span class="p">.</span><span class="nx">writer</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="nx">command</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4客户端">4.客户端</h2>
+<p>同样的先用<code>interface</code>定义客户端</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">ChatClient</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nf">Dial</span><span class="p">(</span><span class="nx">address</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span>
+    <span class="nf">Send</span><span class="p">(</span><span class="nx">command</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">error</span>
+    <span class="nf">SendMessage</span><span class="p">(</span><span class="nx">message</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span>
+    <span class="nf">SetName</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span>
+    <span class="nf">Start</span><span class="p">()</span>
+    <span class="nf">Close</span><span class="p">()</span>
+    <span class="nf">Incoming</span><span class="p">()</span> <span class="kd">chan</span> <span class="nx">protocol</span><span class="p">.</span><span class="nx">MessageCommand</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>客户端通过<code>Dial()</code>连接到服务端，<code>Start()</code> <code>Close()</code>负责停止和关闭服务，<code>Send()</code>用于发送指令。<code>SetName()</code>和<code>SendMessage()</code>负责设置用户名以及发送消息的逻辑封装。最后<code>Incoming()</code>返回一个<code>channel</code>,作为和服务端建立起来作为通讯的连接通道</p>
+<p>下来定义客户端的<code>struct</code>，里面设置一些私有变量用于跟踪连接的<code>conn</code>，同时reader/writer是发送消息放方法的封装。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">TcpChatClient</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">conn</span>      <span class="nx">net</span><span class="p">.</span><span class="nx">Conn</span>
+    <span class="nx">cmdReader</span> <span class="o">*</span><span class="nx">protocol</span><span class="p">.</span><span class="nx">CommandReader</span>
+    <span class="nx">cmdWriter</span> <span class="o">*</span><span class="nx">protocol</span><span class="p">.</span><span class="nx">CommandWriter</span>
+    <span class="nx">name</span>      <span class="kt">string</span>
+    <span class="nx">incoming</span>  <span class="kd">chan</span> <span class="nx">protocol</span><span class="p">.</span><span class="nx">MessageCommand</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">NewClient</span><span class="p">()</span> <span class="o">*</span><span class="nx">TcpChatClient</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="o">&amp;</span><span class="nx">TcpChatClient</span><span class="p">{</span>
+       <span class="nx">incoming</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">protocol</span><span class="p">.</span><span class="nx">MessageCommand</span><span class="p">),</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>Dial</code>建立连接并且创建通讯协议的<code>reader</code>和<code>writer</code></li>
+<li><code>Send</code>使用<code>cmdWriter</code>将消息发到服务端</li>
+<li><code>Start</code>是用来监听<code>server</code>端的广播消息</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">TcpChatClient</span><span class="p">)</span> <span class="nf">Dial</span><span class="p">(</span><span class="nx">address</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="nx">conn</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nf">Dial</span><span class="p">(</span><span class="s">&#34;tcp&#34;</span><span class="p">,</span> <span class="nx">address</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">c</span><span class="p">.</span><span class="nx">conn</span> <span class="p">=</span> <span class="nx">conn</span>
+    <span class="p">}</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">cmdReader</span> <span class="p">=</span> <span class="nx">protocol</span><span class="p">.</span><span class="nf">NewCommandReader</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">cmdWriter</span> <span class="p">=</span> <span class="nx">protocol</span><span class="p">.</span><span class="nf">NewCommandWriter</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">err</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">TcpChatClient</span><span class="p">)</span> <span class="nf">Send</span><span class="p">(</span><span class="nx">command</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">error</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">cmdWriter</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="nx">command</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">TcpChatClient</span><span class="p">)</span> <span class="nf">Start</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">{</span>
+      <span class="nx">cmd</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">cmdReader</span><span class="p">.</span><span class="nf">Read</span><span class="p">()</span>
+      <span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="nx">io</span><span class="p">.</span><span class="nx">EOF</span> <span class="p">{</span>
+          <span class="k">break</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+          <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Read error %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="nx">cmd</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+         <span class="k">switch</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">case</span> <span class="nx">protocol</span><span class="p">.</span><span class="nx">MessageCommand</span><span class="p">:</span>
+            <span class="nx">c</span><span class="p">.</span><span class="nx">incoming</span> <span class="o">&lt;-</span> <span class="nx">v</span>
+         <span class="k">default</span><span class="p">:</span>
+            <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Unknown command: %v&#34;</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5其他">5.其他</h2>
+<p>这个项目的UI用的是<code>tui</code>,很不错的第三方终端ui。<a href="https://github.com/marcusolsson/tui-go">tui</a></p>
+<h2 id="6todo">6.Todo</h2>
+<ul>
+<li>
+<p><input disabled="" type="checkbox"> 画画流程图</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> 用其他协议试试。对比下websocket，rpc</p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">tdtzzz</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-12-12
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/go/">go</a>
+          <a href="/tags/%E8%81%8A%E5%A4%A9%E5%AE%A4/">聊天室</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/red-black-tree/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">红黑树</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/alg-dp-1/">
+            <span class="next-text nav-default">动态规划-背包问题</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="ttforcoder@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/TDTzzz" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2020 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>tdtzzz</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

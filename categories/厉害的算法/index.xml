@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>厉害的算法 on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/categories/%E5%8E%89%E5%AE%B3%E7%9A%84%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 厉害的算法 on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 11 Nov 2020 21:56:46 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/%E5%8E%89%E5%AE%B3%E7%9A%84%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>厉害的并查集</title>
+      <link>http://localhost:1313/post/alg-unionfindset/</link>
+      <pubDate>Wed, 11 Nov 2020 21:56:46 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/alg-unionfindset/</guid>
+      <description>好文章 wiki百科 并查集是啥 并查集也叫作不相交集合(Disjoint Set),用于处理一些不交集的合并及查询问题。 并查集有两个核心操作： 查找</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go基础 on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/categories/go%E5%9F%BA%E7%A1%80/</link>
+    <description>Recent content in go基础 on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 12 Feb 2021 12:00:04 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/go%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go基础-Slice</title>
+      <link>http://localhost:1313/post/go-basic-slice/</link>
+      <pubDate>Fri, 12 Feb 2021 12:00:04 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-basic-slice/</guid>
+      <description>创建方式 数组下标(或者切片下标)，比如a:=[5]int{1,2,3,4,5} s:=a[1:3] 字面量，比如slice:=[]int{1,2,3,4} make 直接</description>
+    </item>
+    
+    <item>
+      <title>Go的并发模式</title>
+      <link>http://localhost:1313/post/go-cocurrence-design/</link>
+      <pubDate>Mon, 01 Feb 2021 15:41:29 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-cocurrence-design/</guid>
+      <description>此文借鉴 《22讲通关GO语言》飞雪无情 并发模式和设计模式很相似，都是对现实场景的抽象封装 以便提供一个统一的解决方案 但和设计模式不同的是，并发</description>
+    </item>
+    
+  </channel>
+</rss>

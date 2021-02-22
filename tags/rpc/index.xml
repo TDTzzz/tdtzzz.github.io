@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rpc on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/rpc/</link>
+    <description>Recent content in rpc on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 01 Nov 2020 16:41:37 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/rpc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go Rpc 1</title>
+      <link>http://localhost:1313/post/go-rpc-1/</link>
+      <pubDate>Sun, 01 Nov 2020 16:41:37 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-rpc-1/</guid>
+      <description>参考博客-极客兔兔 本文从宏观上讲解一个基础rpc框架的实现。 1.RPC框架的基本组成 Registry registry即是注册中心，用于Server注册远程</description>
+    </item>
+    
+  </channel>
+</rss>

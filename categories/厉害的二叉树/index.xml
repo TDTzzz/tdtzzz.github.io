@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>厉害的二叉树 on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/categories/%E5%8E%89%E5%AE%B3%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+    <description>Recent content in 厉害的二叉树 on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 19 Dec 2020 23:40:49 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/%E5%8E%89%E5%AE%B3%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>前缀树</title>
+      <link>http://localhost:1313/post/trie-tree/</link>
+      <pubDate>Sat, 19 Dec 2020 23:40:49 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/trie-tree/</guid>
+      <description>看动画轻松理解「Trie树」 埋坑：目前只是了解原理及用法，代码实现以后补上 定义 Trie 树，也叫“字典树”。顾名思义，它是一个树形结构。它是一种专门</description>
+    </item>
+    
+    <item>
+      <title>红黑树</title>
+      <link>http://localhost:1313/post/red-black-tree/</link>
+      <pubDate>Sat, 19 Dec 2020 10:27:14 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/red-black-tree/</guid>
+      <description>此文只浅显的讲了下概念，至于复杂的代码实现没涉及，后续有时间搞 用go实现红黑树的相关操作 红黑树 好文章 什么是红黑树 当在10亿数据进行不到30次</description>
+    </item>
+    
+    <item>
+      <title>二叉树的套路汇总</title>
+      <link>http://localhost:1313/post/alg-tree-1/</link>
+      <pubDate>Sat, 28 Nov 2020 14:29:45 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/alg-tree-1/</guid>
+      <description>万变不离其宗的二叉树基本解法 前中后序遍历 层序遍历 算深度 常见的二叉树类型 满二叉树：除最后一层无任何子节点外，每一层上的所有结点都有两个子结点二</description>
+    </item>
+    
+  </channel>
+</rss>

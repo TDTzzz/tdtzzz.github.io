@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>背包问题 on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</link>
+    <description>Recent content in 背包问题 on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 12 Dec 2020 13:05:04 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>动态规划-背包问题</title>
+      <link>http://localhost:1313/post/alg-dp-1/</link>
+      <pubDate>Sat, 12 Dec 2020 13:05:04 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/alg-dp-1/</guid>
+      <description>背包类型问题 背包问题九讲 1.0-1背包问题 问题描述 给你一个可装载重量为 W 的背包和 N 个物品，每个物品有重量和价值两个属性。其中第 i 个物品的重量</description>
+    </item>
+    
+  </channel>
+</rss>

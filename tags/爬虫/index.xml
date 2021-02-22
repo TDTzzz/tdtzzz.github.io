@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>爬虫 on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/%E7%88%AC%E8%99%AB/</link>
+    <description>Recent content in 爬虫 on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 02 Jan 2021 12:44:39 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go-爬虫|爬虫架构的设计</title>
+      <link>http://localhost:1313/post/go-crawler/</link>
+      <pubDate>Sat, 02 Jan 2021 12:44:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-crawler/</guid>
+      <description>概述 不用框架，利用channel和goroutine设计一个优秀的并发爬虫架构。 爬的是武汉链家二手房信息 https://wh.lianjia.com/ershoufang/ ps 解析html方面图方便，用了gi</description>
+    </item>
+    
+  </channel>
+</rss>

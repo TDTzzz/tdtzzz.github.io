@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go-kit on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/categories/go-kit/</link>
+    <description>Recent content in go-kit on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Nov 2020 13:18:13 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/go-kit/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go Kit基操</title>
+      <link>http://localhost:1313/post/go-kit/</link>
+      <pubDate>Sun, 08 Nov 2020 13:18:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-kit/</guid>
+      <description>go-micro希望成为一个平台，而go-kit希望成为你平台的一部分 go-kit核心 Service 负责处理业务逻辑 Endpoint 负责请求数据于返回数据的格式转换，</description>
+    </item>
+    
+  </channel>
+</rss>

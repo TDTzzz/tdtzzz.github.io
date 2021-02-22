@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Go-Gc - Even - A super concise theme for Hugo</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="tdtzzz" /><meta name="description" content="概述 垃圾回收（英语：Garbage Collection，缩写为GC）是指一种自动的内存管理机制。当某个程序占用的一部分内存空间不再被这个程序" /><meta name="keywords" content="Hugo, theFme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.76.5 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/go-gc/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Go-Gc" />
+<meta property="og:description" content="概述 垃圾回收（英语：Garbage Collection，缩写为GC）是指一种自动的内存管理机制。当某个程序占用的一部分内存空间不再被这个程序" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/go-gc/" />
+<meta property="article:published_time" content="2021-01-03T12:08:16+08:00" />
+<meta property="article:modified_time" content="2021-01-03T12:08:16+08:00" />
+<meta itemprop="name" content="Go-Gc">
+<meta itemprop="description" content="概述 垃圾回收（英语：Garbage Collection，缩写为GC）是指一种自动的内存管理机制。当某个程序占用的一部分内存空间不再被这个程序">
+<meta itemprop="datePublished" content="2021-01-03T12:08:16+08:00" />
+<meta itemprop="dateModified" content="2021-01-03T12:08:16+08:00" />
+<meta itemprop="wordCount" content="1481">
+
+
+
+<meta itemprop="keywords" content="go,gc," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Go-Gc"/>
+<meta name="twitter:description" content="概述 垃圾回收（英语：Garbage Collection，缩写为GC）是指一种自动的内存管理机制。当某个程序占用的一部分内存空间不再被这个程序"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">码怪记事录</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">时间线</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">码怪记事录</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">时间线</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Go-Gc</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-01-03 </span>
+        <div class="post-category">
+            <a href="/categories/go%E9%87%8D%E7%82%B9%E4%B8%9C%E8%A5%BF/"> go重点东西 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#常见的垃圾回收方法">常见的垃圾回收方法</a>
+      <ul>
+        <li><a href="#1引用计数">1.引用计数</a>
+          <ul>
+            <li><a href="#优点">优点：</a></li>
+            <li><a href="#缺点">缺点：</a></li>
+          </ul>
+        </li>
+        <li><a href="#2标记清除法mark-and-sweep">2.标记清除法(mark and sweep)</a>
+          <ul>
+            <li><a href="#流程">流程</a></li>
+            <li><a href="#缺点-1">缺点</a></li>
+          </ul>
+        </li>
+        <li><a href="#3三色标记法">3.三色标记法</a>
+          <ul>
+            <li><a href="#对象丢失的现象不stw保护的话">对象丢失的现象（不STW保护的话）</a></li>
+            <li><a href="#强弱三色不变式">强弱三色不变式</a></li>
+            <li><a href="#屏障机制">屏障机制</a></li>
+            <li><a href="#混合写屏障机制">混合写屏障机制</a></li>
+          </ul>
+        </li>
+        <li><a href="#4go的gc总结">4.go的gc总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="概述">概述</h1>
+<p><strong>垃圾回收</strong>（英语：Garbage Collection，缩写为GC）是指一种自动的内存管理机制。当某个程序占用的一部分内存空间不再被这个程序访问时，这个程序会借助<strong>垃圾回收</strong>算法向操作系统归还这部分内存空间。垃圾回收器可以减轻程序员的负担，也减少程序中的错误</p>
+<hr>
+<h1 id="常见的垃圾回收方法">常见的垃圾回收方法</h1>
+<h2 id="1引用计数">1.引用计数</h2>
+<p>引用计数通过在对象上增加自己被引用的次数，被其他对象引用时加1，引用自己的对象被回收时减1，引用数为0的对象即为可以被回收的对象。这种算法在内存比较紧张和实时性比较高的系统中使用的比较广泛，如ios cocoa框架，php，python等。</p>
+<h3 id="优点">优点：</h3>
+<ol>
+<li>方式简单，回收速度快。</li>
+</ol>
+<h3 id="缺点">缺点：</h3>
+<ol>
+<li>
+<p>需要额外的空间存放计数。</p>
+</li>
+<li>
+<p>无法处理循环引用（如a.b=b;b.a=a这种情况）。</p>
+</li>
+<li>
+<p>频繁更新引用计数降低了性能</p>
+</li>
+</ol>
+<hr>
+<h2 id="2标记清除法mark-and-sweep">2.标记清除法(mark and sweep)</h2>
+<p>goV1.3之前所用的gc方法</p>
+<h3 id="流程">流程</h3>
+<ol>
+<li>暂停程序业务逻辑，找出不可达的对象和可达对象</li>
+<li>开始标记，程序找出它所有可达的对象，并做上标记</li>
+<li>标记完了之后，开始清除未标记的对象</li>
+<li>停止STW，让程序继续跑，然后循环这个过程，直到process程序生命周期结束</li>
+</ol>
+<h3 id="缺点-1">缺点</h3>
+<ol>
+<li><strong>STW</strong>,stop the world;让程序暂停，程序出现卡顿</li>
+<li>标记需要扫描整个heap</li>
+<li>清除数据会产生heap碎片</li>
+</ol>
+<hr>
+<h2 id="3三色标记法">3.三色标记法</h2>
+<blockquote>
+<p>go在1.5版本改为了三色标记法，这种方法的mark操作可以渐进执行而不是需要每次都扫描整个内存空间，可以减少STW的时间。</p>
+<p>go在1.8版本又改动了gc，采用了混合写屏障（hybrid write barrier）来避免堆栈重新扫描。</p>
+<p>详细流程见下图。</p>
+</blockquote>
+<h3 id="对象丢失的现象不stw保护的话">对象丢失的现象（不STW保护的话）</h3>
+<p>两个条件同时满足则会出现对象丢失</p>
+<ol>
+<li>一个白色对象被一个黑色对象引用（白色被挂在黑色下）</li>
+<li>灰色对象与他们之间的可达关系的白色对象遭到破坏（灰色同时丢了白色）</li>
+</ol>
+<p>例子如下</p>
+<ol>
+<li>已经被标记成灰色的对象2有指针p指向白色对象3</li>
+<li>在还没扫描到对象2，已经标记为黑色的对象4闯将指针q指向对象3</li>
+<li>与此同时灰色对象2将指针p移除，白色对象就只被挂在已经扫描完成的黑色对象4下了</li>
+<li>正常执行算法逻辑，灰色对象2,7被标记为黑色，而白色对象3因为黑色对象已经不会再被扫描，所以被等待清除。</li>
+</ol>
+<p><img src="/go-gc/ex-1.jpg" alt="ex-1"></p>
+<p><img src="/go-gc/ex-2.jpg" alt="ex-2"></p>
+<p><img src="/go-gc/ex-3.jpg" alt="ex-3"></p>
+<hr>
+<h3 id="强弱三色不变式">强弱三色不变式</h3>
+<p>见图</p>
+<p>如果三色标记满足强弱不变式之一，即可保证不丢失对象</p>
+<hr>
+<h3 id="屏障机制">屏障机制</h3>
+<h4 id="插入屏障">插入屏障</h4>
+<p>对象被引用时触发的机制</p>
+<h5 id="满足">满足</h5>
+<p>满足强三色不变式（不存在白色被黑色引用了）</p>
+<h5 id="场景">场景</h5>
+<ol>
+<li>A之前无下游，新添加一个夏有对象B，B被标记成灰色</li>
+<li>A将下游对象由C更换成B，B被标记成灰色</li>
+</ol>
+<h5 id="不足">不足</h5>
+<p>结束时需要STW来重新扫描栈，大约需要10~100ms</p>
+<h4 id="删除屏障">删除屏障</h4>
+<p>对象被删除时触发的机制</p>
+<h5 id="满足-1">满足</h5>
+<p>满足若三色不变式（保护灰色对象到白色对象的路径不会断）</p>
+<h5 id="场景-1">场景</h5>
+<ol>
+<li>A对象，删除B对象的引用。B被A删除后被标记成灰（如果之前为白）</li>
+<li>A对象，更换下游B为C。B被A删除后被标记成灰（如果B之前为白）</li>
+</ol>
+<h5 id="不足-1">不足</h5>
+<p>回收精度低，一个对象即是被删除了，最后一个指向它的指针也依然可以活过这一轮，在下一轮GC才能被清理掉。</p>
+<hr>
+<h3 id="混合写屏障机制">混合写屏障机制</h3>
+<blockquote>
+<p>通俗来讲就是分堆空间和栈空间，栈上没屏障操作，添加还是删除都标价为黑色，实际上可以看做是一种延迟回收机制来避免STW</p>
+</blockquote>
+<p>详情见下图</p>
+<hr>
+<h2 id="4go的gc总结">4.go的gc总结</h2>
+<ol>
+<li>1.3版本的普通标记清除法，整体过程需要STW,效率极低</li>
+<li>1.5版本的三色标记法，对空间启动写屏障，栈空间不启动，全部扫描之后，需要重新扫描一次栈(需要STW)，效率一般</li>
+<li>1.8版本的三色标记法，混合写屏障机制，栈空间不启动，堆空间启动柜，整体过程不需要STW(gc标记准备阶段和GC标记结束阶段还是需要STW 来通知所有的Goroutine 我进入垃圾回收阶段了,然后启用/关闭屏障机制,但是这个耗时很小,一般几十微妙)，效率较高</li>
+</ol>
+<p><img src="/go-gc/go-gc.jpeg" alt="go-gc"></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">tdtzzz</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2021-01-03
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/go/">go</a>
+          <a href="/tags/gc/">gc</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/lfu-lru/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">缓存淘汰算法</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/go-crawler/">
+            <span class="next-text nav-default">Go-爬虫|爬虫架构的设计</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="ttforcoder@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/TDTzzz" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2020 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>tdtzzz</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

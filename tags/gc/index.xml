@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gc on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/gc/</link>
+    <description>Recent content in gc on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 03 Jan 2021 12:08:16 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/gc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go-Gc</title>
+      <link>http://localhost:1313/post/go-gc/</link>
+      <pubDate>Sun, 03 Jan 2021 12:08:16 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go-gc/</guid>
+      <description>概述 垃圾回收（英语：Garbage Collection，缩写为GC）是指一种自动的内存管理机制。当某个程序占用的一部分内存空间不再被这个程序</description>
+    </item>
+    
+  </channel>
+</rss>
